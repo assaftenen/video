@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,6 +8,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { VideoItemComponent } from './containers/video-item/video-item.component';
 import { TranscriptComponent } from './containers/transcript/transcript.component';
 import { VideoTitleComponent } from './components/video-title/video-title.component';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { VideoTitleComponent } from './components/video-title/video-title.compon
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule
   ],
   providers: [],
