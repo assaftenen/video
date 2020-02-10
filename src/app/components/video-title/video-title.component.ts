@@ -13,7 +13,7 @@ export class VideoTitleComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes?.title?.currentValue) {
-      ///...
+      this.title = changes?.title.currentValue;
     }
 
   }
