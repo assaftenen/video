@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoItemComponent implements OnInit {
 
+  title: string = 'Moment from meeting with two pillars'
   constructor() { }
 
   ngOnInit(): void {

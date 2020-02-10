@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VidoItemComponent } from './containers/vido-item/vido-item.component';
 import { PlayerComponent } from './components/player/player.component';
 import { VideoItemComponent } from './containers/video-item/video-item.component';
 import { TranscriptComponent } from './containers/transcript/transcript.component';
@@ -12,7 +11,6 @@ import { VideoTitleComponent } from './components/video-title/video-title.compon
 @NgModule({
   declarations: [
     AppComponent,
-    VidoItemComponent,
     PlayerComponent,
     VideoItemComponent,
     TranscriptComponent,

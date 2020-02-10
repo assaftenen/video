@@ -1,0 +1,26 @@
+.video-item_container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 80px auto 237px;
+  grid-template-columns: 260px auto 260px;
+}
+.video-item_title {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.video-item_player {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.video-item_transcripts {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
