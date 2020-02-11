@@ -1,1 +1,6 @@
-<div>{{subTitles | json}}</div>
+<div>{{subTitles?.speaker}}</div>
+<div>{{subTitles?.snippet}}</div>
+<div *ngIf="subTitles" class="dot"
+    [ngStyle]="{'background-color':subTitles.speaker === 'Cust' ? ' rgba(238, 110, 255, 100)' : 'rgba(0, 167, 209, 100)' }">
+    {{subTitles?.speaker}}
+</div>

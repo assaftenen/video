@@ -1,3 +1,4 @@
+import { ITranscrtipt } from './../../../utils/interfaces';
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 export class TranscriptComponent implements OnInit {
   @Input() transcript
   @Input() currentLocation
-  subTitles: any;
+  subTitles: ITranscrtipt;
   constructor() { }
 
   ngOnInit(): void {
@@ -18,10 +19,11 @@ export class TranscriptComponent implements OnInit {
       this.transcript = changes.transcript.currentValue
     }
     if (changes?.currentLocation?.currentValue) {
-      debugger
       this.currentLocation = changes.currentLocation.currentValue
-      if (this.transcript[this.currentLocation]) {
-        this.subTitles = this.transcript[this.currentLocation]
+      if (this.transcript) {
+        if (this.transcript[this.currentLocation]) {
+          this.subTitles = this.transcript[this.currentLocation];
+        }
       }
     }
   }

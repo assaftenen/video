@@ -1,27 +1,27 @@
 # ChorusPlayer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+## build with latest angular cli (9.00)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## //@ToDo-Assaf 
+1. Move relevant api request url to environment file.
+2. Css the player
+3. Css the transcript
+4. change logic for listenning to video play location. Should be build with host listener.
+5. Move external flex raw layout to pure grid.
+6. no video id
+7. Button blue line
+8. move utils to folder
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## utils for work 
+1. design - https://static.chorus.ai/angular-project-design/index.html [imgae : https://static.chorus.ai/images/chorus-logo.svg ]
+2. source for video -  http://localhost:4200/?id=4d79041e-f25f-421d-9e5f-3462459b9934 
+3.  clipId - 4d79041e-f25f-421d-9e5f-3462459b9934
+4. Transcript - https://static.chorus.ai/api/4d79041e-f25f-421d-9e5f-3462459b9934.json 
+        [ ## time property is for sorting only ##]
+        [Cust #EE6EEF | Rep #00A7D1]
+5. source - https://static.chorus.ai/api/4d79041e-f25f-421d-9e5f-3462459b9934.mp4
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

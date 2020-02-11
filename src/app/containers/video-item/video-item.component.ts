@@ -24,6 +24,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   isVIdeoPlay = false;
   currentPlayTime: any;
   currentLocation: number;
+  isFirstTimePlaying = true;
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) { }
 
@@ -52,7 +53,6 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
       this.videoplayer.nativeElement.addEventListener("timeupdate", (res) => {
         const currentTime = res.target?.currentTime.toFixed()
         if (currentTime) {
-          debugger
           this.currentLocation = currentTime;
         }
       })
@@ -60,7 +60,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   }
 
   toggleVideo(event: any) {
-    if (this.isVIdeoPlay) {
+    if (this.isVIdeoPlay || this.isFirstTimePlaying) {
       this.videoplayer.nativeElement.play();
       if (this.source && this.videoplayer?.nativeElement) {
         this.currentPlayTime = this.videoplayer.nativeElement.currentTime.toFixed(1);
@@ -69,6 +69,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
       this.videoplayer.nativeElement.pause();
     }
     this.isVIdeoPlay = !this.isVIdeoPlay;
+    this.isFirstTimePlaying = false;
   }
 }
 
