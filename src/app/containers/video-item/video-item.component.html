@@ -2,10 +2,10 @@
     <app-video-title [title]="title" class="video-item_title">
 
     </app-video-title>
-    <app-player class="video-item_player">
+    <app-player *ngIf="clipId" [clipId]="clipId" class="video-item_player">
 
     </app-player>
-    <app-transcript class="video-item_transcripts">
+    <app-transcript *ngIf="transcript$ | async" [transcript]="transcript$ | async" class="video-item_transcripts">
 
     </app-transcript>
 </div>

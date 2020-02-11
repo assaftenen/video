@@ -4,6 +4,8 @@
   display: grid;
   grid-template-rows: 80px auto 237px;
   grid-template-columns: 260px auto 260px;
+  background-color: white;
+  border-radius: 5px;
 }
 .video-item_title {
   grid-row-start: 1;
