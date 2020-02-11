@@ -7,6 +7,8 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 })
 export class TranscriptComponent implements OnInit {
   @Input() transcript
+  @Input() currentLocation
+  subTitles: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +16,13 @@ export class TranscriptComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes?.transcript?.currentValue) {
       this.transcript = changes.transcript.currentValue
+    }
+    if (changes?.currentLocation?.currentValue) {
+      debugger
+      this.currentLocation = changes.currentLocation.currentValue
+      if (this.transcript[this.currentLocation]) {
+        this.subTitles = this.transcript[this.currentLocation]
+      }
     }
   }
 
