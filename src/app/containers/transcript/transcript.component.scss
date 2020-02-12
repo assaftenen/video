@@ -1,6 +1,49 @@
+.transcripts-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  height: 100%;
+}
+
+.transcripts-snippets_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.trascripts-guests {
+  width: 99.1;
+  font-family: SFUIText-Regular;
+  font-size: 12px;
+  color: #333333;
+  line-height: 16px;
+}
+.transcripts_snippet {
+  display: inline-block;
+  text-align: start;
+  font-family: SFUIText-Regular;
+  font-size: 15px;
+  color: #333333;
+  line-height: 20px;
+  background-color: #f7f7f7;
+  max-width: 724px;
+  border-radius: 100px;
+  margin-bottom: 1px;
+}
 .dot {
   height: 28px;
   width: 28px;
+  margin-right: 10px;
+  margin-left: 32px;
+  margin-bottom: 87px;
   border-radius: 50%;
   display: inline-block;
+  border: 1px solid;
+  align-self: center;
+}
+.transcripts-snippets_stack {
+  display: flex;
+  flex-direction: column;
 }

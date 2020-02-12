@@ -1,4 +1,4 @@
-export enum guests {
-    Rep,
-    Cust
+export enum guestsEnum {
+    Rep = 'Rep',
+    Cust = 'Cust'
 }

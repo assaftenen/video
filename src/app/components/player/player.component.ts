@@ -1,36 +1,30 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { chorusConsts } from './../../../utils/consts';
-
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
 
-export class PlayerComponent implements OnInit, OnChanges, AfterViewInit {
-  @Input() clipId: string
+export class PlayerComponent implements OnInit, OnChanges {
+  @Input() isVideoPlay;
+  @Output() userClickedPlay: EventEmitter<any> = new EventEmitter()
   source: string
 
   constructor() { }
   @ViewChild("videoPlayer", { static: false }) videoplayer: ElementRef;
   ngOnInit(): void {
-    // if (this.clipId) {
-    //   //@ToDo-Assaf move to environments files
-    //   this.source = `${chorusConsts.urlPrefix}${chorusConsts.url}${this.clipId}${chorusConsts.urlPathEnd}`
-    // }
   }
 
 
   ngOnChanges(changes: SimpleChanges) {
-    // if (changes?.clipId?.currentValue) {
-    //   this.clipId = changes.clipId.currentValue;
-    // }
+    debugger
+    if (typeof changes?.isVideoPlay?.currentValue === "boolean") {
+      this.isVideoPlay = changes.isVideoPlay.currentValue;
+    }
   }
-  toggleVideo(event: any) {
-    this.videoplayer.nativeElement.play();
-  }
-  ngAfterViewInit(): void {
 
-
+  playClicked() {
+    this.userClickedPlay.emit('play!')
   }
 }

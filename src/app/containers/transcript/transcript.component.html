@@ -1,6 +1,11 @@
-<div>{{subTitles?.speaker}}</div>
-<div>{{subTitles?.snippet}}</div>
-<div *ngIf="subTitles" class="dot"
-    [ngStyle]="{'background-color':subTitles.speaker === 'Cust' ? ' rgba(238, 110, 255, 100)' : 'rgba(0, 167, 209, 100)' }">
-    {{subTitles?.speaker}}
+<div class="transcripts-container">
+    <!-- dot -->
+    <div *ngIf="transcriptObj" class="dot" [ngStyle]="getGuestColor()"></div>
+    <!-- snippets + name -->
+    <div class="transcripts-snippets_container">
+        <div class="transcripts_guest">{{transcriptObj?.speaker}}</div>
+        <div class="transcripts-snippets_stack">
+            <div class="transcripts_snippet" *ngFor="let snippet of snippetsPerUserArray">{{snippet}}</div>
+        </div>
+    </div>
 </div>

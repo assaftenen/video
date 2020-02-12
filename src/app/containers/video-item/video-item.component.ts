@@ -6,8 +6,6 @@ import { ITranscrtipt } from 'src/utils/interfaces';
 import { tap, mergeAll, toArray, reduce } from 'rxjs/operators';
 import { chorusConsts } from 'src/utils/consts';
 
-
-
 @Component({
   selector: 'app-video-item',
   templateUrl: './video-item.component.html',
@@ -32,17 +30,18 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.clipId = this.route.snapshot.queryParams["id"];
     if (this.clipId) {
-      this.transcript$ = this.httpService.getTranscript(this.clipId).
-        pipe(mergeAll(),
-          reduce(this.transcriptReducerFunction, {})
-        )
-
-      if (this.clipId) {
-        //@ToDo-Assaf move to environments files
-        this.source = `${chorusConsts.urlPrefix}${chorusConsts.url}${this.clipId}${chorusConsts.urlPathEnd}`
-      }
+      this.getTranscriptById();
     }
   }
+  private getTranscriptById() {
+    this.transcript$ = this.httpService.getTranscript(this.clipId).pipe(
+      mergeAll(),
+      reduce(this.transcriptReducerFunction, {}));
+    //@ToDo-Assaf move to enviorment
+    this.source = `${chorusConsts.urlPrefix}${chorusConsts.url}${this.clipId}${chorusConsts.urlPathEnd}`
+
+  }
+
   transcriptReducerFunction(acc, curr): import("rxjs").OperatorFunction<ITranscrtipt, {}> {
     acc[curr.time.toFixed()] = curr;
     return acc
@@ -60,7 +59,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   }
 
   toggleVideo(event: any) {
-    if (this.isVIdeoPlay || this.isFirstTimePlaying) {
+    if (!this.isVIdeoPlay || this.isFirstTimePlaying) {
       this.videoplayer.nativeElement.play();
       if (this.source && this.videoplayer?.nativeElement) {
         this.currentPlayTime = this.videoplayer.nativeElement.currentTime.toFixed(1);
@@ -70,6 +69,11 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     }
     this.isVIdeoPlay = !this.isVIdeoPlay;
     this.isFirstTimePlaying = false;
+  }
+  onUserClickedPlay(event) {
+    debugger
+    this.toggleVideo(event)
+
   }
 }
 

@@ -2,11 +2,11 @@
     <app-video-title [title]="title" class="video-item_title">
 
     </app-video-title>
-    <app-player *ngIf="clipId" [clipId]="clipId" class="video-item_player">
+    <app-player *ngIf="clipId" class="video-item_player" (userClickedPlay)="onUserClickedPlay($event)"
+        [isVideoPlay]="isVIdeoPlay">
         <div class="player-container">
-            <video width="304" #videoPlayer (click)="toggleVideo($event)">
+            <video width="304" *ngIf="this.source" #videoPlayer (click)="toggleVideo($event)">
                 <source src="{{this.source}}" type="video/mp4">
-                Your browser does not support HTML5 video.
             </video>
         </div>
     </app-player>

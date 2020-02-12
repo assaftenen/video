@@ -5,3 +5,26 @@
   align-items: center;
   justify-content: center;
 }
+.player-container {
+  position: relative;
+}
+.player-btn {
+  position: absolute;
+  right: 128px;
+  opacity: 0.8;
+  background: #646791;
+  border-radius: 3px;
+  width: 48px;
+  height: 48px;
+  z-index: 100;
+}
+.player-btn_triangle {
+  width: 0;
+  height: 0;
+  margin-top: 16px;
+  border-style: solid;
+  border-width: 8px 0 8px 14px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 17px;
+  margin-top: 16px;
+}
