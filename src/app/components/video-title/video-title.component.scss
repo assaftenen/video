@@ -1,3 +1,5 @@
+@import "./../../../styles.scss";
+
 .video-title_container {
   height: 100%;
   display: flex;
@@ -6,7 +8,7 @@
   & .video-title_item {
     height: 28px;
     width: max-content;
-    color: #333333;
+    color: $transcript;
     margin-top: 43px;
     padding: 0;
     font-size: 26px;

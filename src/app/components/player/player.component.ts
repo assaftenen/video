@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
-import { chorusConsts } from './../../../utils/consts';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',

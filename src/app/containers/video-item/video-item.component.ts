@@ -1,10 +1,12 @@
 import { HttpService } from './../../services/http.service';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, fromEvent } from 'rxjs';
-import { ITranscrtipt } from 'src/utils/interfaces';
-import { tap, mergeAll, toArray, reduce } from 'rxjs/operators';
-import { chorusConsts } from 'src/utils/consts';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { mergeAll, reduce } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { ITranscrtipt } from 'src/utils/interfaces/interfaces';
+
+
 
 @Component({
   selector: 'app-video-item',
@@ -37,8 +39,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     this.transcript$ = this.httpService.getTranscript(this.clipId).pipe(
       mergeAll(),
       reduce(this.transcriptReducerFunction, {}));
-    //@ToDo-Assaf move to enviorment
-    this.source = `${chorusConsts.urlPrefix}${chorusConsts.url}${this.clipId}${chorusConsts.urlPathEnd}`
+    this.source = `${environment.urlPrefix}${environment.url}${this.clipId}${environment.urlPathEnd}`
 
   }
 
@@ -48,7 +49,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.videoplayer.nativeElement) {
+    if (this.videoplayer?.nativeElement) {
       this.videoplayer.nativeElement.addEventListener("timeupdate", (res) => {
         const currentTime = res.target?.currentTime.toFixed()
         if (currentTime) {

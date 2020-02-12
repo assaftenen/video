@@ -2,26 +2,32 @@
 
 ## build with latest angular cli (9.00)
 
+## running the app##
+start app by running "npm run start", then visit (e.g) =>
+http://localhost:4200/?id=4d79041e-f25f-421d-9e5f-3462459b9934
 
+## app design
 
-## //@ToDo-Assaf 
-1. Move relevant api request url to environment file.
-2. Css the player
-3. Css the transcript
-4. change logic for listenning to video play location. Should be build with host listener.
-5. Move external flex raw layout to pure grid.
-6. no video id
-7. Button blue line
-8. move utils to folder
+ 1. Video item component is the main container for the entire app.
+ 2. Video-item hold transcript component and player component.
+ 3. The player component can be quite flexible, custom controllers can be easily added.
+ 4. Player elements  are injected threw ng-content tags. Transcripts component is getting the exact relevant snippetObj at the relevant moment (.1 for accurence). In order to find both at the video location and the transcript "cross points" (the location of movie where there is also need to show snippet).
+ 5. Layout is grid and flex based.
+ 6. No external libraries
 
-
+*Important remark!* 
+ Under the current given id, the transcript is seems like "not connected" with the mp4 given files (by client request).it seems like differents conversation (speaking totally different conversation)*HOWEVER*  the video mechanizem is not effected and work as expected.
 
 ## utils for work 
-1. design - https://static.chorus.ai/angular-project-design/index.html [imgae : https://static.chorus.ai/images/chorus-logo.svg ]
-2. source for video -  http://localhost:4200/?id=4d79041e-f25f-421d-9e5f-3462459b9934 
+
+1.design - https://static.chorus.ai/angular-project-design/index.html [imgae : https://static.chorus.ai/images/chorus-logo.svg ]
+ http://localhost:4200/?id=4d79041e-f25f-421d-9e5f-3462459b9934 
+
 3.  clipId - 4d79041e-f25f-421d-9e5f-3462459b9934
 4. Transcript - https://static.chorus.ai/api/4d79041e-f25f-421d-9e5f-3462459b9934.json 
+
         [ ## time property is for sorting only ##]
         [Cust #EE6EEF | Rep #00A7D1]
-5. source - https://static.chorus.ai/api/4d79041e-f25f-421d-9e5f-3462459b9934.mp4
+
+5. Source - https://static.chorus.ai/api/4d79041e-f25f-421d-9e5f-3462459b9934.mp4
 

@@ -1,3 +1,5 @@
+@import "./../../../styles.scss";
+
 .player-container {
   height: 100%;
   display: flex;
@@ -12,7 +14,7 @@
   position: absolute;
   right: 128px;
   opacity: 0.8;
-  background: #646791;
+  background: $arrow-background;
   border-radius: 3px;
   width: 48px;
   height: 48px;

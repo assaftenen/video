@@ -1,8 +1,13 @@
 <div class="video-item_container">
-    <app-video-title [title]="title" class="video-item_title">
+    <app-video-title *ngIf="clipId" [title]="title" class="video-item_title">
 
     </app-video-title>
-    <app-player *ngIf="clipId" class="video-item_player" (userClickedPlay)="onUserClickedPlay($event)"
+    <ng-template #noClipId>
+        <div class="no-id-container">
+            <h4>PLEASE ADD ID TO URL</h4>
+        </div>
+    </ng-template>
+    <app-player *ngIf="clipId; else noClipId" class="video-item_player" (userClickedPlay)="onUserClickedPlay($event)"
         [isVideoPlay]="isVIdeoPlay">
         <div class="player-container">
             <video width="304" *ngIf="this.source" #videoPlayer (click)="toggleVideo($event)">
@@ -10,6 +15,7 @@
             </video>
         </div>
     </app-player>
+
     <app-transcript *ngIf="(transcript$ | async)  && currentLocation" [currentLocation]="currentLocation"
         [transcript]="transcript$ | async" class="video-item_transcripts">
 

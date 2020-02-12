@@ -1,6 +1,7 @@
-import { ITranscrtipt } from './../../../utils/interfaces';
+
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { guestsEnum } from 'src/utils/enums/enums';
+import { ITranscrtipt } from 'src/utils/interfaces/interfaces';
 
 
 
