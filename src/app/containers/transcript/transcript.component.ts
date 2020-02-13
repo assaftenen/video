@@ -1,14 +1,16 @@
 
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { guestsEnum } from 'src/utils/enums/enums';
 import { ITranscrtipt } from 'src/utils/interfaces/interfaces';
+import { chainedInstruction } from '@angular/compiler/src/render3/view/util';
 
 
 
 @Component({
   selector: 'app-transcript',
   templateUrl: './transcript.component.html',
-  styleUrls: ['./transcript.component.scss']
+  styleUrls: ['./transcript.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TranscriptComponent implements OnInit {
   @Input() transcript // array of transcript objs
