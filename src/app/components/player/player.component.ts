@@ -19,7 +19,6 @@ export class PlayerComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger
     if (typeof changes?.isVideoPlay?.currentValue === "boolean") {
       this.isVideoPlay = changes.isVideoPlay.currentValue;
     }

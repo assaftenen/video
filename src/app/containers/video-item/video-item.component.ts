@@ -72,7 +72,6 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     this.isFirstTimePlaying = false;
   }
   onUserClickedPlay(event) {
-    debugger
     this.toggleVideo(event)
 
   }

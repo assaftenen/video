@@ -20,7 +20,6 @@ export class HttpService {
   public getTranscript(clipId: string) {
     return this.httpClient.get<ITranscrtipt[]>(`${this.apiURL}${clipId}.json`)
       .pipe(catchError(error => {
-        debugger
         if (error instanceof HttpErrorResponse && error.status == 404) {
           this.router.navigateByUrl('/', { replaceUrl: true });
 
