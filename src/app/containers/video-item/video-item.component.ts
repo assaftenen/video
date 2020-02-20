@@ -1,8 +1,8 @@
 import { HttpService } from './../../services/http.service';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { mergeAll, reduce, tap } from 'rxjs/operators';
+import { Observable, fromEvent, Subscription } from 'rxjs';
+import { mergeAll, reduce, distinctUntilChanged, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ITranscrtipt } from 'src/utils/interfaces/interfaces';
 
@@ -22,8 +22,9 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   transcript$: Observable<any>
   source: string;
   isVIdeoPlay = false;
-  currentLocation: number;
+  currentLocation: { time: number };
   isFirstTimePlaying = true;
+  subscription: Subscription
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) { }
 
@@ -49,13 +50,14 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     if (this.videoplayer?.nativeElement) {
-      this.videoplayer.nativeElement.addEventListener("timeupdate", (res) => {
-        const currentTime = res.target?.currentTime.toFixed()
-        if (currentTime && this.currentLocation !== currentTime) {
-          this.currentLocation = currentTime;
-        }
-      })
+
+      this.subscription = fromEvent(this.videoplayer.nativeElement, "timeupdate").pipe(
+        map(event => (event as any).target?.currentTime.toFixed()),
+        distinctUntilChanged()).subscribe((time) => {
+          this.currentLocation = time;
+        })
     }
+
   }
 
   toggleVideo(event: any) {
@@ -72,6 +74,9 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   onUserClickedPlay(event) {
     this.toggleVideo(event)
 
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
 
