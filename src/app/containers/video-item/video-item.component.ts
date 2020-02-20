@@ -2,7 +2,7 @@ import { HttpService } from './../../services/http.service';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { mergeAll, reduce } from 'rxjs/operators';
+import { mergeAll, reduce, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ITranscrtipt } from 'src/utils/interfaces/interfaces';
 
@@ -22,7 +22,6 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
   transcript$: Observable<any>
   source: string;
   isVIdeoPlay = false;
-  currentPlayTime: any;
   currentLocation: number;
   isFirstTimePlaying = true;
 
@@ -52,7 +51,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     if (this.videoplayer?.nativeElement) {
       this.videoplayer.nativeElement.addEventListener("timeupdate", (res) => {
         const currentTime = res.target?.currentTime.toFixed()
-        if (currentTime) {
+        if (currentTime && this.currentLocation !== currentTime) {
           this.currentLocation = currentTime;
         }
       })
@@ -63,7 +62,6 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     if (!this.isVIdeoPlay || this.isFirstTimePlaying) {
       this.videoplayer.nativeElement.play();
       if (this.source && this.videoplayer?.nativeElement) {
-        this.currentPlayTime = this.videoplayer.nativeElement.currentTime.toFixed(1);
       }
     } else {
       this.videoplayer.nativeElement.pause();

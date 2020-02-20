@@ -26,6 +26,8 @@ export class TranscriptComponent implements OnInit {
     // transcript obj change
     if (changes?.transcript?.currentValue) {
       this.transcript = changes.transcript.currentValue
+      console.log({ transcript: this.transcript })
+
     }
     // current location change
     if (changes?.currentLocation?.currentValue) {
