@@ -1,9 +1,9 @@
 <div class="transcripts-container">
     <!-- dot -->
-    <div *ngIf="transcriptObj" class="dot" [ngStyle]="getGuestColor()"></div>
+    <div *ngIf="currentTranscriptObj" class="dot" [ngStyle]="getGuestColor()"></div>
     <!-- snippets + name -->
     <div class="transcripts-snippets_container">
-        <div class="transcripts_guest">{{transcriptObj?.speaker}}</div>
+        <div class="transcripts_guest">{{currentTranscriptObj?.speaker}}</div>
         <div class="transcripts-snippets_stack">
             <div class="transcripts_snippet" *ngFor="let snippet of snippetsPerUserArray">{{snippet}}</div>
         </div>

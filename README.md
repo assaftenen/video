@@ -1,4 +1,8 @@
 # ChorusPlayer
+##Update 22-02##
+
+[X] bug of clicking issue during start ("first attempt failed") 
+[X] transcript component is getting called only ones there is a snippets at curret player location 
 
 ## build with latest angular cli (9.00)
 

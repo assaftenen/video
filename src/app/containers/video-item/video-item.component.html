@@ -11,13 +11,13 @@
         [isVideoPlay]="isVIdeoPlay">
         <div class="player-container">
             <video width="304" *ngIf="this.source" #videoPlayer (click)="toggleVideo($event)">
-                <source src="{{this.source}}" type="video/mp4">
+                <source src="{{source}}" type="video/mp4">
             </video>
         </div>
     </app-player>
 
-    <app-transcript *ngIf="(transcript$ | async)  && currentLocation" [currentLocation]="currentLocation"
-        [transcript]="transcript$ | async" class="video-item_transcripts">
+    <app-transcript [currentTranscriptObj]="currentTranscriptObj" *ngIf="transcript  && currentTranscriptObj"
+        class="video-item_transcripts">
 
     </app-transcript>
 </div>

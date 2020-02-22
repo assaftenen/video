@@ -2,7 +2,7 @@ import { HttpService } from './../../services/http.service';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, fromEvent, Subscription } from 'rxjs';
-import { mergeAll, reduce, distinctUntilChanged, map } from 'rxjs/operators';
+import { mergeAll, reduce, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ITranscrtipt } from 'src/utils/interfaces/interfaces';
 
@@ -18,13 +18,15 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild("videoPlayer") videoplayer: ElementRef;
   title: string = 'Moment from meeting with two pillars'
-  clipId: any;
-  transcript$: Observable<any>
+  // catched by snapshot of url
+  clipId: string;
   source: string;
   isVIdeoPlay = false;
-  currentLocation: { time: number };
   isFirstTimePlaying = true;
-  subscription: Subscription
+  playerLocationSubscription: Subscription
+  transcriptSubscription$: Subscription
+  transcript: ITranscrtipt;
+  currentTranscriptObj: any;
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) { }
 
@@ -36,29 +38,36 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     }
   }
   private getTranscriptById() {
-    this.transcript$ = this.httpService.getTranscript(this.clipId).pipe(
+    this.transcriptSubscription$ = this.httpService.getTranscript(this.clipId).pipe(
       mergeAll(),
-      reduce(this.transcriptReducerFunction, {}));
+      reduce(this.transcriptReducerFunction, {})).subscribe(transcript => {
+        this.transcript = transcript
+      });
     this.source = `${environment.urlPrefix}${environment.url}${this.clipId}${environment.urlPathEnd}`
 
   }
 
-  transcriptReducerFunction(acc, curr): import("rxjs").OperatorFunction<ITranscrtipt, {}> {
+  transcriptReducerFunction(acc, curr): Observable<ITranscrtipt> {
     acc[curr.time.toFixed()] = curr;
     return acc
   }
 
   ngAfterViewInit() {
     if (this.videoplayer?.nativeElement) {
-
-      this.subscription = fromEvent(this.videoplayer.nativeElement, "timeupdate").pipe(
+      this.playerLocationSubscription = fromEvent(this.videoplayer.nativeElement, "timeupdate").pipe(
         map(event => (event as any).target?.currentTime.toFixed()),
         distinctUntilChanged()).subscribe((time) => {
-          this.currentLocation = time;
+          if (this.transcript[time]) {
+            this.currentTranscriptObj = Object.assign({}, this.transcript[time])
+          }
+
         })
     }
 
   }
+
+
+
 
   toggleVideo(event: any) {
     if (!this.isVIdeoPlay || this.isFirstTimePlaying) {
@@ -76,7 +85,8 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
 
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.playerLocationSubscription.unsubscribe();
+    this.transcriptSubscription$.unsubscribe();
   }
 }
 

@@ -1,6 +1,6 @@
 <div class="player-container">
-    <div *ngIf="!isVideoPlay" class="player-btn">
-        <div (click)="playClicked()" class="player-btn_triangle"> </div>
+    <div (click)="playClicked()" *ngIf="!isVideoPlay" class="player-btn">
+        <div class="player-btn_triangle"> </div>
     </div>
     <ng-content>
     </ng-content>
