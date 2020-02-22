@@ -1,7 +1,8 @@
 ##Update 22-02##
 
-[X] bug of clicking issue during start ("first attempt failed") 
-[X] transcript component is getting called only ones there is a snippets at curret player location 
+[X] bug of clicking on video play icon - ("first attempt failed") - fixed
+[X] transcript component is getting called only ones there is a snippets at curret player location, video item component is injecting the transctipt comp. Only the needed(only the second that cross transcript obj)
+[X] Transcript component is now showing all chat history and combine user snippents if needed according to spec demands.
 
 --track by
 --component separation
