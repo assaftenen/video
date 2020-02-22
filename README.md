@@ -3,6 +3,10 @@
 [X] bug of clicking issue during start ("first attempt failed") 
 [X] transcript component is getting called only ones there is a snippets at curret player location 
 
+--track by
+--component separation
+--build up full chat
+
 # ChorusPlayer
 
 ## build with latest angular cli (9.00)

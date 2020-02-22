@@ -1,6 +1,6 @@
 
 export interface ITranscrtipt {
-    snippet: String,
-    speaker: String,
+    snippet: string | string[],
+    speaker: string,
     time: number
 }
