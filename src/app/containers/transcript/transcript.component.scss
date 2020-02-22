@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: baseline;
-  height: 100%;
 }
 
 .transcripts-snippets_container {
@@ -33,18 +32,23 @@
   border-radius: 100px;
   margin-bottom: 1px;
 }
+.dot-transcript-wrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  align-items: flex-end;
+}
 .dot {
   height: 28px;
   width: 28px;
-  margin-right: 10px;
-  margin-left: 32px;
   border-radius: 50%;
   display: inline-block;
   border: 1px solid;
-  align-self: center;
+  align-self: flex-end;
 }
 .transcripts-snippets_stack {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding-left: 32px;
 }

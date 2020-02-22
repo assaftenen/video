@@ -1,13 +1,15 @@
 <div class="transcripts-container" *ngIf="allCurrentTranscriptObjs.length>0">
     <div *ngFor="let transcript of allCurrentTranscriptObjs">
         <!-- dot -->
-        <div class="dot" [ngStyle]="getGuestColor(transcript)"></div>
-        <!-- snippets + name -->
-        <div class="transcripts-snippets_container">
-            <div class="transcripts_guest">{{transcript.speaker}}</div>
-            <div class="transcripts-snippets_stack">
-                <!-- rolling the snipets -->
-                <div class="transcripts_snippet" *ngFor="let snippet of transcript.snippet">{{snippet}}</div>
+        <div class="dot-transcript-wrapper">
+            <div class="dot" [ngStyle]="getGuestColor(transcript)"></div>
+            <!-- snippets + name -->
+            <div class="transcripts-snippets_container">
+                <div class="transcripts_guest">{{transcript.speaker}}</div>
+                <div class="transcripts-snippets_stack">
+                    <!-- rolling the snipets -->
+                    <div class="transcripts_snippet" *ngFor="let snippet of transcript.snippet">{{snippet}}</div>
+                </div>
             </div>
         </div>
     </div>
