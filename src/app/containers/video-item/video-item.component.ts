@@ -46,7 +46,6 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
     this.source = `${environment.urlPrefix}${environment.url}${this.clipId}${environment.urlPathEnd}`
 
   }
-
   transcriptReducerFunction(acc, curr): Observable<ITranscrtipt> {
     acc[curr.time.toFixed()] = curr;
     return acc
@@ -63,12 +62,7 @@ export class VideoItemComponent implements OnInit, AfterViewInit {
 
         })
     }
-
   }
-
-
-
-
   toggleVideo(event: any) {
     if (!this.isVIdeoPlay || this.isFirstTimePlaying) {
       this.videoplayer.nativeElement.play();
