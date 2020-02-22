@@ -1,8 +1,9 @@
-# ChorusPlayer
 ##Update 22-02##
 
 [X] bug of clicking issue during start ("first attempt failed") 
 [X] transcript component is getting called only ones there is a snippets at curret player location 
+
+# ChorusPlayer
 
 ## build with latest angular cli (9.00)
 
@@ -15,7 +16,7 @@ http://localhost:4200/?id=4d79041e-f25f-421d-9e5f-3462459b9934
  1. Video item component is the main container for the entire app.
  2. Video-item hold transcript component and player component.
  3. The player component can be quite flexible, custom controllers can be easily added.
- 4. Player elements  are injected threw ng-content tags. Transcripts component is getting the exact relevant snippetObj at the relevant moment (.1 for accurence). In order to find both at the video location and the transcript "cross points" (the location of movie where there is also need to show snippet).
+ 4. Player elements  are injected threw ng-content tags. Transcripts component is getting the exact relevant snippetObj at the relevant moment (.1 for accurence). In order to find both at the  video location and the transcript "cross points" (the location of movie where there is also need to show snippet).
  5. Layout is grid and flex based.
  6. No external libraries
 

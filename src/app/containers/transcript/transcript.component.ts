@@ -20,11 +20,7 @@ export class TranscriptComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.count('changes1')
-
-    // current location change
     if (changes?.currentTranscriptObj?.currentValue) {
-      console.count('changes2')
       this.prevopisSpeaker = changes?.currentTranscriptObj?.previousValue?.speaker
       if (this.prevopisSpeaker == this.currentTranscriptObj?.speaker) {
         this.snippetsPerUserArray = [...this.snippetsPerUserArray, this.currentTranscriptObj?.snippet as string]
